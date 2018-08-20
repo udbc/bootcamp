@@ -1,0 +1,6 @@
+---
+# handlers file for catalogue
+- name: restart carts service
+  service:
+    name: carts
+    state: restarted

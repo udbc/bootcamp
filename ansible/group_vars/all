@@ -1,0 +1,10 @@
+common:
+  packages:
+    - curl
+    - git
+    - wget
+    - build-essential
+
+env:
+  variables:
+    - ORGNAME=School of Devops

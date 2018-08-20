@@ -1,0 +1,4 @@
+---
+# defaults file for catalogue
+carts:
+  artifact: https://storage.googleapis.com/vibe-catalogue/carts.jar

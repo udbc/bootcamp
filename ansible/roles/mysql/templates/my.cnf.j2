@@ -1,0 +1,22 @@
+# Notice: This file is being managed by Ansible
+# Any manual updates will be overwritten
+# filename: roles/mysql/templates/my.cnf.j2 
+
+[mysqld]
+user		 = {{ mysql['config']['user'] | default("mysql") }}
+{% if mysql.config.pid is defined %}  
+pid-file	 = {{ mysql['config']['pid'] }}
+{% endif %}
+{% if mysql.config.pid is defined %}  
+socket		 = {{ mysql['config']['socket'] }}
+{% endif %}
+{% if mysql.config.pid is defined %}  
+port		 = {{ mysql['config']['port'] }}
+{% endif %}
+{% if mysql.config.pid is defined %}  
+datadir		 = {{ mysql['config']['datadir'] }}
+{% endif %}
+{% if mysql.config.pid is defined %}  
+bind-address = {{ mysql['config']['bind'] }}
+{% endif %}
+

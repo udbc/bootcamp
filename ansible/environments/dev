@@ -1,0 +1,14 @@
+# add inventory for dev env to this file
+[frontend]
+192.168.61.11 ansible_ssh_pass=codespaces
+
+[catalogue]
+192.168.61.12 ansible_ssh_pass=codespaces
+
+[carts]
+192.168.61.13 ansible_ssh_pass=codespaces
+
+[dev:children]
+frontend
+catalogue
+carts

@@ -1,0 +1,23 @@
+---
+# filename: roles/mysql/tasks/install_Debian.yml
+
+  - name: install mysql client
+    apt:
+      name: "{{ mysql['pkg']['client'] }}"
+      update_cache: yes
+    tags:
+     - install
+
+  - name: install mysql python binding
+    apt:
+      name: "{{ mysql['pkg']['python'] }}"
+    tags:
+     - install
+
+  - name: install mysql server
+    apt:
+      name: "{{ mysql['pkg']['server'] }}"
+      update_cache: yes
+    when: mysql.server
+    tags:
+     - install

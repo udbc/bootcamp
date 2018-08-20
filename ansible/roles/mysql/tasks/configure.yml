@@ -1,0 +1,34 @@
+---
+# filename: roles/mysql/tasks/configure.yml
+ - name: create mysql config
+   template: src="my.cnf.j2" dest="{{ mysql['config']['cnfpath'] }}" mode=0644
+   notify:
+    - restart mysql service
+   tags:
+    - configure
+
+ - name: start mysql service
+   service:
+     name: mysql
+     state: started
+   tags:
+    - configure
+
+ - name: create mysql databases
+   mysql_db:
+     name: "{{ item.key }}"
+     state: "{{ item.value.state }}"
+   with_dict: "{{ mysql['databases'] }}"
+   tags:
+    - configure 
+
+ - name: create mysql users
+   mysql_user:
+     name: "{{ item.key }}"
+     host: "{{ item.value.host }}"
+     password: "{{ item.value.pass }}"
+     priv: "{{ item.value.priv }}"
+     state: "{{ item.value.state }}"
+   with_dict: "{{ mysql['users'] }}"
+   tags:
+    - configure

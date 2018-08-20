@@ -1,0 +1,8 @@
+common:
+  packages:
+    - openjdk-8-jre-headless
+    - openjdk-8-jdk-headless
+    - maven
+
+carts:
+  artifact: https://storage.googleapis.com/vibe-catalogue/carts.jar

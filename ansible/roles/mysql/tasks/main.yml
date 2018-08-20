@@ -1,0 +1,19 @@
+---
+# This is main tasks file for mysql role
+# filename: roles/mysql/tasks/main.yml
+
+# Load vars specific to OS Family.
+- include_vars: "{{ ansible_os_family }}.yml"
+  when: ansible_os_family != 'Debian'
+
+- import_tasks: install_RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- import_tasks: install_Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- import_tasks: configure.yml
+  when: mysql.server
+
+- import_tasks: service.yml
+  when: mysql.server

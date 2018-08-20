@@ -1,0 +1,3 @@
+---
+# tasks file for catalogue
+  - import_tasks: deploy.yml

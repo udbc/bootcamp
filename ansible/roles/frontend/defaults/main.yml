@@ -1,0 +1,6 @@
+---
+# defaults file for frontend
+frontend:
+  release:
+    url: https://github.com/udbc/front-end/archive/v6.1.tar.gz
+    version: 6.1

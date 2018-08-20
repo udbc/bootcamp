@@ -1,0 +1,7 @@
+- name: Install pre requisite packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    cache_valid_time: 86400
+  with_items:
+    - "{{ common.packages }}"

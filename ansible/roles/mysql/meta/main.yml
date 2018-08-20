@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Gourav Shah
+  description: MySQL Database Role
+  company: School of Devops
+  min_ansible_version: 1.4
+  platforms:
+  - name: EL
+    versions:
+      - all
+  - name: Ubuntu
+    versions:
+      - all
+  categories:
+  - database:sql

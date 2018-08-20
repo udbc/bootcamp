@@ -1,0 +1,38 @@
+- name: create releases directory
+  file:
+    path: /opt/apps/frontend/releases
+    state: directory
+    recurse: yes
+    mode: 0755
+
+- name: download release from registry
+  unarchive:
+    src: "{{ frontend.release.url }}"
+    dest: /opt/apps/frontend/releases/
+    remote_src: yes
+    mode: 0755
+
+- name: create symlink to the deployment directory
+  file:
+    src: "/opt/apps/frontend/releases/front-end-{{ frontend.release.version }}"
+    dest: /opt/frontend
+    state: link
+    force: true
+  notify: restart frontend service
+
+
+- name: copy init script for frontend
+  copy:
+    src: frontend
+    dest: /etc/init.d/frontend
+    mode: 0755
+
+#- name: install node application dependencies before start
+#  npm:
+#    path: "/opt/apps/frontend/releases/{{ frontend.release_version }}"
+#    state: latest
+
+- name: start frontend service
+  service:
+    name: frontend
+    state: started

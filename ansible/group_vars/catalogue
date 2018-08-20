@@ -1,0 +1,31 @@
+mysql:
+  config:
+    user: mysql
+    port: 3306
+    datadir: /var/lib/mysql
+    bind: 0.0.0.0
+    pid: /var/run/mysqld/mysqld.pid
+    socket: /var/run/mysqld/mysqld.sock
+    cnfpath: /etc/mysql/my.cnf
+  databases:
+    catalogue_db:
+      name: catalogue_db
+      state: present
+  users:
+    catalogue:
+      name: catalogue
+      host: "%"
+      pass: admin123
+      priv: '*.*:ALL'
+      state: present
+  service: mysql
+  pkg:
+    server: mariadb-server
+    client: mariadb-client
+    python: python-mysqldb
+  server: true
+
+catalogue:
+  static_assets: https://github.com/udbc/catalogue/archive/1.0.1.tar.gz
+  bin: https://storage.googleapis.com/vibe-catalogue/catalogue
+  port: 7081

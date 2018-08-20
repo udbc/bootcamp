@@ -1,0 +1,32 @@
+---
+# tasks file for nodejs
+  - name: download nodejs from source
+    unarchive:
+      src: https://nodejs.org/dist/v4.8.6/node-v4.8.6-linux-x64.tar.xz
+      dest: /usr/local
+      remote_src: yes
+      creates: /usr/local/node-v4.8.6-linux-x64
+
+  - name: symlink node to node
+    file:
+      src: /usr/local/node-v4.8.6-linux-x64/bin/node
+      dest: /usr/local/bin/node
+      state: link
+
+  - name: symlink npm to npm
+    file:
+      src: /usr/local/node-v4.8.6-linux-x64/bin/npm
+      dest: /usr/local/bin/npm
+      state: link
+
+  - name: download script to install yarn
+    get_url:
+      url: https://yarnpkg.com/install.sh
+      dest: /opt/yarn_install.sh
+      mode: 0755
+
+  - name: install yarn
+    shell: /opt/yarn_install.sh > yarn_install.log
+    args:
+      creates: /root/.yarn/bin/yarn
+    ignore_errors: true

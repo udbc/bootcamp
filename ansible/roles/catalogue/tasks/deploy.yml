@@ -1,0 +1,31 @@
+- name: create releases directory
+  file:
+    path: /opt/apps/catalogue/releases
+    state: directory
+    mode: 0755
+    recurse: yes
+
+- name: download catalogue binary
+  get_url:
+    url: "{{ catalogue.bin }}"
+    dest: /opt/apps/catalogue/releases/
+    mode: 0755
+
+- name: create symlink to the deployment directory
+  file:
+    src: /opt/apps/catalogue/releases/catalogue
+    dest: /opt/catalogue
+    state: link
+    force: true
+  notify: restart catalogue service
+
+- name: generate init script for catalogue
+  template:
+    src: catalogue.j2
+    dest: /etc/init.d/catalogue
+    mode: 0755
+
+- name: start catalogue service
+  service:
+    name: catalogue
+    state: started

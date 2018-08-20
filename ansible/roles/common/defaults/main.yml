@@ -1,0 +1,13 @@
+---
+# defaults file for common
+system:
+  paths:
+    - /usr/local/sbin
+    - /usr/local/bin
+    - /usr/sbin
+    - /usr/bin
+    - /sbin
+    - /bin
+env:
+  variables:
+    - "AUTHOR=School of Devops"

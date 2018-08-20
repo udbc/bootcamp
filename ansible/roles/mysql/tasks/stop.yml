@@ -1,0 +1,8 @@
+---
+# filename: roles/mysql/tasks/stop.yml
+ - name: stop mysql server
+   service: 
+     name: "{{ mysql['service'] }}" 
+     state: stopped   
+   tags:
+    - stop 

@@ -1,0 +1,24 @@
+- name: create release directory
+  file:
+    path: /opt/apps/carts
+    state: directory
+    recurse: yes
+    mode: 0755
+
+- name: download carts artifact
+  get_url:
+    url: "{{ carts.artifact }}"
+    dest: /opt/apps/carts/carts.jar
+    mode: 0755
+  notify: restart carts service
+
+- name: setup init script
+  copy:
+    src: carts
+    dest: /etc/init.d/carts.init
+    mode: 0755
+
+- name: launch carts service
+  service:
+    name: carts
+    state: started

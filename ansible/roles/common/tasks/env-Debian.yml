@@ -1,0 +1,14 @@
+---
+  - name: set system path
+    template:
+      src: environment.j2
+      dest: /etc/environment
+      mode: '0644'
+      owner: root
+      group: root
+
+  - name: create custom executables path
+    file:
+      path: /opt/bin
+      state: directory
+      owner: root

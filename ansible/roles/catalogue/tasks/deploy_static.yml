@@ -1,0 +1,13 @@
+- name: download static assets
+  unarchive:
+    src: "{{ catalogue.static_assets }}"
+    dest: /opt
+    mode: 0755
+    remote_src: yes
+
+- name: create a symlink to images
+  file:
+     src: /opt/catalogue-1.0.1/images
+     dest: /images
+     state: link
+     force: true

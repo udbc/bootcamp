@@ -1,0 +1,6 @@
+---
+# handlers file for frontend
+  - name: restart frontend service
+    service:
+      name: frontend
+      state: restarted
