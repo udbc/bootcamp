@@ -5,6 +5,10 @@ common:
     - wget
     - build-essential
 
+additional
+  paths:
+    - /opt/bin
+
 env:
   variables:
     - ORGNAME=School of Devops
