@@ -1,0 +1,4 @@
+- name: start supervisor
+  service:
+    name: supervisor
+    state: started 

@@ -5,3 +5,6 @@
 
 - import_tasks: env-Debian.yml
   when: ansible_os_family == 'Debian'
+
+- import_tasks: supervisor.yml
+  when: ansible_os_family == 'Debian'

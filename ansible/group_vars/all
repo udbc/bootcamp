@@ -3,6 +3,7 @@ common:
     - curl
     - git
     - wget
+    - unzip
     - build-essential
     - supervisor
 
