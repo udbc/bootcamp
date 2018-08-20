@@ -14,7 +14,7 @@
 
 - name: setup init script
   copy:
-    src: carts
+    src: carts.init
     dest: /etc/init.d/carts.init
     mode: 0755
 

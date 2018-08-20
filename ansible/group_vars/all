@@ -4,8 +4,9 @@ common:
     - git
     - wget
     - build-essential
+    - supervisor
 
-additional
+additional:
   paths:
     - /opt/bin
 

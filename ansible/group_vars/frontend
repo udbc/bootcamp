@@ -1,4 +1,4 @@
 frontend:
   release:
-    url: https://github.com/udbc/front-end/archive/v6.1.tar.gz
-    version: front-end-6.1
+    url: http://jenkins:8080/job/Package%20Frontend/lastSuccessfulBuild/artifact/distribution/frontend-0.7.1.zip
+    version: 0.7.1
