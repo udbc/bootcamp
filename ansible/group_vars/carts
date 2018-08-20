@@ -5,4 +5,4 @@ common:
     - maven
 
 carts:
-  artifact: https://storage.googleapis.com/vibe-catalogue/carts.jar
+  artifact: http://jenkins:8080/view/carts/job/Carts%20Package/lastSuccessfulBuild/artifact/target/carts.jar

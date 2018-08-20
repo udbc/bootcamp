@@ -12,13 +12,16 @@
     mode: 0755
   notify: restart carts service
 
-- name: setup init script
+- name: copy supervisor config for frontend
   copy:
-    src: carts.init
-    dest: /etc/init.d/carts.init
+    src: carts.supervisor.conf
+    dest: /etc/supervisor/conf.d/carts.conf
     mode: 0755
+  notify: restart supervisor
 
-- name: launch carts service
-  service:
+- meta: flush_handlers
+
+- name: start carts service
+  supervisorctl:
     name: carts
     state: started
