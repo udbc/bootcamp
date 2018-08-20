@@ -12,7 +12,7 @@
     remote_src: yes
     mode: 0755
 
-- name: create relase symlink 
+- name: create relase symlink
   file:
     src: "/opt/apps/frontend/releases/{{ frontend.release.version }}"
     dest: /opt/frontend
@@ -25,7 +25,7 @@
     src: frontend.supervisor.conf
     dest: /etc/supervisor/conf.d/frontend.conf
     mode: 0755
-  notify: reload supervisor
+  notify: restart supervisor
 
 - meta: flush_handlers
 
