@@ -1,0 +1,15 @@
+[program:catalogue]
+command="/opt/catalogue -port {{ catalogue.port }} -images=/images/ -DSN {{ mysql['users']['catalogue']['name'] }}:{{ mysql['users']['catalogue']['pass'] }}@tcp(localhost:3306)/{{ mysql['databases']['catalogue_db']['name'] }}"
+stdout_logfile=/var/log/catalogue-service-out.log
+stderr_logfile=/var/log/catalogue-service-err.log
+autostart=true
+autorestart=true
+startsecs=10
+startretries=50
+stopsignal=QUIT
+stopwaitsecs=180
+stopasgroup=false
+killasgroup=false
+user=root
+redirect_stderr=false
+directory=/opt

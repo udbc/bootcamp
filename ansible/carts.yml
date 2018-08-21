@@ -2,5 +2,5 @@
   - hosts: carts
     become: yes
     roles:
-      - { role: carts, tags: ['deploy'] }
-      
+      - { role: common }
+      - { role: carts }

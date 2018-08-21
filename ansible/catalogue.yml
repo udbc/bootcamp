@@ -3,5 +3,4 @@
     become: yes
     roles:
       - { role: mysql }
-      - { role: catalogue, tags: ['deploy'] }
-      
+      - { role: catalogue }
