@@ -13,7 +13,7 @@ volumes:
 
 services:
   control:
-    image: codespaces/ansible-control:v0.4.0
+    image: codespaces/ansible-control:v1.0
     ports:
       - "8000:8000"
     volumes:
@@ -39,7 +39,7 @@ services:
   catalogue:
     image: codespaces/ansible-node-ubuntu-1404:v0.1.0
     ports:
-       - "7081:7081"
+       - "7081:80"
     networks:
       custom:
         ipv4_address: 192.168.61.12
@@ -50,7 +50,7 @@ services:
   carts:
     image: codespaces/ansible-node-ubuntu-1404:v0.1.0
     ports:
-      - "8081:8081"
+      - "8081:80"
     networks:
       custom:
         ipv4_address: 192.168.61.13
@@ -58,7 +58,7 @@ services:
     domainname: codespaces.io
     hostname: carts
     restart: always
-  mongo:
+  carts-db:
     image: mongo
     restart: always
     environment:
