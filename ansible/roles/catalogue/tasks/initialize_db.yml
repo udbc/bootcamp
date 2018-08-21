@@ -3,7 +3,6 @@
     copy:
       src: dump.sql
       dest: /tmp
-#    delegate_to: catalogue
 
   - name: Restore database
     mysql_db:
@@ -11,5 +10,4 @@
       state: import
       target: /tmp/dump.sql
     run_once: true
-#    delegate_to: catalogue
-#    ignore_errors: true
+    ignore_errors: true
