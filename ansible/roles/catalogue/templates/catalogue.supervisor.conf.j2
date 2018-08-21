@@ -1,7 +1,7 @@
 [program:catalogue]
-command="/opt/catalogue -port {{ catalogue.port }} -images=/images/ -DSN {{ mysql['users']['catalogue']['name'] }}:{{ mysql['users']['catalogue']['pass'] }}@tcp(localhost:3306)/{{ mysql['databases']['catalogue_db']['name'] }}"
-stdout_logfile=/var/log/catalogue-service-out.log
-stderr_logfile=/var/log/catalogue-service-err.log
+command=/opt/catalogue -port {{ catalogue.port }} -images=/images/ -DSN "{{ mysql['users']['catalogue']['name'] }}:{{ mysql['users']['catalogue']['pass'] }}@tcp(localhost:3306)/{{ mysql['databases']['catalogue_db']['name'] }}"
+stdout_logfile=/var/log/catalogue.log
+stderr_logfile=/var/log/catalogue.error.log
 autostart=true
 autorestart=true
 startsecs=10
