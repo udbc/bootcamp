@@ -1,20 +1,20 @@
 - name: create releases directory
   file:
-    path: "/opt/apps/frontend/releases/{{ frontend.release.version }}"
+    path: "/opt/apps/frontend/releases/{{ frontend_version }}"
     state: directory
     recurse: yes
     mode: 0755
 
 - name: download release artifact
   unarchive:
-    src: "{{ frontend.release.url }}"
-    dest: "/opt/apps/frontend/releases/{{ frontend.release.version }}"
+    src: "{{ frontend_url }}/frontend-{{ frontend_version }}.zip"
+    dest: "/opt/apps/frontend/releases/{{ frontend_version }}"
     remote_src: yes
     mode: 0755
 
 - name: create relase symlink
   file:
-    src: "/opt/apps/frontend/releases/{{ frontend.release.version }}"
+    src: "/opt/apps/frontend/releases/{{ frontend_version }}"
     dest: /opt/frontend
     state: link
   notify: restart frontend service
