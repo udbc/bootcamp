@@ -1,27 +1,27 @@
 - name: create release directory
   file:
     path: /opt/apps/carts
-    state: directory
-    recurse: yes
-    mode: 0755
+    state:
+    recurse:
+    mode:
 
 - name: download carts artifact
   get_url:
-    url: "{{ carts.artifact }}"
-    dest: /opt/apps/carts/carts.jar
-    mode: 0755
+    url:
+    dest:
+    mode:
   notify: restart carts service
 
 - name: copy supervisor config for frontend
-  copy:
+  xxx:
     src: carts.supervisor.conf
-    dest: /etc/supervisor/conf.d/carts.conf
-    mode: 0755
+    dest:
+    mode:
   notify: restart supervisor
 
 - meta: flush_handlers
 
 - name: start carts service
   supervisorctl:
-    name: carts
-    state: started
+    xxx:
+    xxx:
