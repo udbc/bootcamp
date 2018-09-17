@@ -10,6 +10,7 @@ networks:
 
 volumes:
   cs-ansible:
+  jenkins_home:
 
 services:
   control:
@@ -65,10 +66,11 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: admin123
   jenkins:
-    image: schoolofdevops/jenkins
+    image: schoolofdevops/jenkins:2.138.1-slim
     ports:
       - "8080:8080"
     volumes:
+      - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       custom:
