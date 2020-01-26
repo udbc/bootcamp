@@ -65,7 +65,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: admin123
   jenkins:
-    image: schoolofdevops/jenkins
+    image: jenkins/jenkins
     ports:
       - "8080:8080"
     volumes:
