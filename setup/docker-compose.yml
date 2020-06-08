@@ -102,7 +102,7 @@ services:
           - docker
     privileged: true
     domainname: codespaces.io
-    hostname: dockr
+    hostname: docker
     restart: always
     volumes:
       - jenkins-docker-certs:/certs/client
