@@ -19,7 +19,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - cs-ansible:/workspace
+      - cs-ansible:/root/workspace
     networks:
       custom:
         ipv4_address: 192.168.61.10
