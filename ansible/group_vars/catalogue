@@ -27,5 +27,5 @@ mysql:
 
 catalogue:
   static_assets: https://github.com/udbc/catalogue/archive/1.0.1.tar.gz
-  bin: https://storage.googleapis.com/vibe-catalogue/catalogue
+  bin: https://github.com/udbc/catalogue/raw/master/bin/catalogue
   port: 80
