@@ -15,7 +15,7 @@ volumes:
 
 services:
   control:
-    image: codespaces/ansible-control:v1.0
+    image: codespaces/ansible-control:3.0.0
     ports:
       - "8000:8000"
     volumes:
@@ -28,7 +28,7 @@ services:
     hostname: control
     restart: always
   frontend:
-    image: codespaces/ansible-node-ubuntu-1404:v0.1.0
+    image: codespaces/ansible-node-ubuntu:18.04
     ports:
        - "80:8079"
     networks:
@@ -39,7 +39,7 @@ services:
     hostname: frontend
     restart: always
   catalogue:
-    image: codespaces/ansible-node-ubuntu-1404:v0.1.0
+    image: codespaces/ansible-node-ubuntu:18.04
     ports:
        - "7081:80"
     networks:
@@ -50,7 +50,7 @@ services:
     hostname: catalogue
     restart: always
   carts:
-    image: codespaces/ansible-node-ubuntu-1404:v0.1.0
+    image: codespaces/ansible-node-ubuntu:18.04
     ports:
       - "8081:80"
     networks:
