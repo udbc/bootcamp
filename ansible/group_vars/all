@@ -6,6 +6,9 @@ common:
     - unzip
     - build-essential
     - supervisor
+    - python3-pymysql
+    - python-mysqldb
+    - python3-mysqldb
 
 
 additional:

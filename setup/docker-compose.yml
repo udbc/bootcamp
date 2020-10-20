@@ -1,4 +1,4 @@
-version: '2'
+version: '3.0'
 
 networks:
   custom:
@@ -10,14 +10,16 @@ networks:
 
 volumes:
   cs-ansible:
+  jenkins-docker-certs:
+  jenkins-data:
 
 services:
   control:
-    image: codespaces/ansible-control:v1.0
+    image: codespaces/ansible-control:3.0.0
     ports:
       - "8000:8000"
     volumes:
-      - cs-ansible:/workspace
+      - cs-ansible:/root/workspace
     networks:
       custom:
         ipv4_address: 192.168.61.10
@@ -26,7 +28,7 @@ services:
     hostname: control
     restart: always
   frontend:
-    image: codespaces/ansible-node-ubuntu-1404:v0.1.0
+    image: codespaces/ansible-node-ubuntu:18.04
     ports:
        - "80:8079"
     networks:
@@ -37,7 +39,7 @@ services:
     hostname: frontend
     restart: always
   catalogue:
-    image: codespaces/ansible-node-ubuntu-1404:v0.1.0
+    image: codespaces/ansible-node-ubuntu:18.04
     ports:
        - "7081:80"
     networks:
@@ -48,7 +50,7 @@ services:
     hostname: catalogue
     restart: always
   carts:
-    image: codespaces/ansible-node-ubuntu-1404:v0.1.0
+    image: codespaces/ansible-node-ubuntu:18.04
     ports:
       - "8081:80"
     networks:
@@ -64,12 +66,16 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: admin123
+
   jenkins:
-    image: schoolofdevops/jenkins
+    image: jenkinsci/blueocean
     ports:
-      - "8080:8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - 8080:8080
+      - 50000:50000
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
     networks:
       custom:
         ipv4_address: 192.168.61.15
@@ -77,3 +83,28 @@ services:
     domainname: codespaces.io
     hostname: jenkins
     restart: always
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
+    depends_on: 
+      - docker
+
+  docker:
+    image: docker:dind
+    ports:
+      - 2376:2376
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    networks:
+      custom:
+        ipv4_address: 192.168.61.16
+        aliases:
+          - docker
+    privileged: true
+    domainname: codespaces.io
+    hostname: docker
+    restart: always
+    volumes:
+      - jenkins-docker-certs:/certs/client
+      - jenkins-data:/var/jenkins_home
+
