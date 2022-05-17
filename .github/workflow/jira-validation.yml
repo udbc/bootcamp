@@ -1,0 +1,16 @@
+name: jira-lint
+on: [pull_request]
+
+jobs:
+  jira-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cleartax/jira-lint@master
+        name: jira-lint
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          jira-token: ${{ secrets.JIRA_TOKEN }}
+          jira-base-url: https://uneritx.atlassian.net
+          skip-branches: '^(production-release|master|release\/v\d+)$'
+          skip-comments: false
+          pr-threshold: 1000
