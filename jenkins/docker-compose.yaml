@@ -14,7 +14,10 @@ volumes:
 
 services:
   jenkins:
-    image: jenkinsci/blueocean
+    image: myjenkins/blueocean:2.375.1-1
+    build: 
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - 8080:8080
       - 50000:50000
@@ -28,7 +31,7 @@ services:
     dns: 8.8.8.8
     domainname: codespaces.io
     hostname: jenkins
-    restart: always
+    restart: on-failure
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
@@ -39,7 +42,6 @@ services:
     image: docker:dind
     ports:
       - 2376:2376
-      - 8888:8888
     environment:
       - DOCKER_TLS_CERTDIR=/certs
     networks:
