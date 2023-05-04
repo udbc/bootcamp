@@ -14,7 +14,7 @@ volumes:
 
 services:
   jenkins:
-    image: myjenkins/blueocean:2.375.1-1
+    image: myjenkins/blueocean:2.387.3
     build: 
       context: ./
       dockerfile: Dockerfile
