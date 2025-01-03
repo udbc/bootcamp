@@ -1,3 +1,9 @@
+## Supporting Courses and Builder's Community
+
+  * If you are looking for a structured course with step by step learning enroll into [Ultimate Jenkins Bootcamp by School of Devops.](https://www.udemy.com/course/ultimate-jenkins-bootcamp-by-school-of-devops/?referralCode=BAC80386E38F767AC155).
+  * Join [Devops Builders Community](https://bit.ly/4fHywt0) to connect with fellow builders.
+  * Subscribe to [Devops.Tube](https://devops.tube/) for devops learning. 
+
 ## Setup Jenkins with Docker
 
 Here you are going learn, how to setup jenkins using docker. 
